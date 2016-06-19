@@ -1,0 +1,62 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+}
+
+.component {
+    background-color: skyblue;
+    width: 480px;
+    text-align: center;
+}
+
+.comp-head {
+    background-color: lightgrey;
+}
+
+.col {
+    display: inline-block;
+    line-height: 36px;
+    width: 48%;
+}
+
+.col.left {
+    text-align: right;
+}
+
+.col.right {
+    text-align: left;
+}
+
+.col > label, .col > input {
+    display: block;
+}
+
+.col > label {
+    display: block;
+}
+
+.col > input {
+    height: 36px;
+}
+
+.buttons {
+    padding: 16px 0;
+}
+
+.right-side, .left-side {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.label, .output {
+    display: block;
+    padding: 0 4px;
+}
+
+.bottom {
+    padding: 16px 0;
+    text-align: right;
+}
