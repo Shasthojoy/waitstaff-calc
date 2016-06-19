@@ -13,20 +13,20 @@
     <div class="left-side">
         <section class="component">
             <h2 class="comp-head">Enter Meal Details</h2>
-            <form class="user-input" name="userInput" ng-submit="vm.submit()">
+            <form class="user-input" name="userInput" ng-submit="vm.submit(userInput)">
                 <div class="col left">
                     <label for="mealPrice">Base Meal Price: $</label>
                     <label for="taxRate">Tax Rate: %</label>
                     <label for="tipRate">Tip Rate: %</label>
                 </div>
                 <div class="col right">
-                    <input name="mealPrice">
-                    <input name="taxRate">
-                    <input name="tipRate">
+                    <input name="mealPrice" type="text" ng-model="data.mealPrice" required>
+                    <input name="taxRate" type="text" ng-model="data.taxRate" ng-init="data.taxRate='15'" required>
+                    <input name="tipRate" type="text" ng-model="data.tipRate" ng-init="data.tipRate='10'" required>
                 </div>
                 <div class="buttons">
-                    <button>Submit</button>
-                    <button>Cancel</button>
+                    <button type="submit">Submit</button>
+                    <button type="reset" ng-click="vm.reset(userInput)">Cancel</button>
                 </div>
             </form>
         </section>
@@ -40,15 +40,15 @@
                 <span class="label">Tip</span>
             </div>
             <div class="col right">
-                <span class="output">0.00</span>
-                <span class="output">0.00</span>
+                <span class="output">{{ vm.currentMeal.subtotal | currency : '' }}</span>
+                <span class="output">{{ vm.currentMeal.tip | currency : '' }}</span>
             </div>
             <hr>
             <div class="col left">
                 <span class="label">Total</span>
             </div>
             <div class="col right">
-                <span class="output">0.00</span>
+                <span class="output">{{ vm.currentMeal.total | currency : '' }}</span>
             </div>
         </section>
 
@@ -60,9 +60,9 @@
                 <span class="label">Average Tip per Meal</span>
             </div>
             <div class="col right">
-                <span class="output">0.00</span>
-                <span class="output">0.00</span>
-                <span class="output">0.00</span>
+                <span class="output">{{ vm.myEarnings.tipTotal | currency : '' }}</span>
+                <span class="output">{{ vm.myEarnings.mealCount }}</span>
+                <span class="output">{{ vm.myEarnings.averageTip | currency : '' }}</span>
             </div>
         </section>
     </div>
