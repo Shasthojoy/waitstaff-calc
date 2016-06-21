@@ -1,82 +1,87 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="waiterCalc">
-<head>
-    <meta charset="UTF-8">
-    <title>Waitstaff Calculator</title>
 
-    <link href="main.css" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <title>Waitstaff Calculator</title>
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:100,300" rel="stylesheet">
+  <link href="main.css" rel="stylesheet">
 
 </head>
+
 <body ng-controller="MainCtrl as vm">
 
-    <h1>Waitstaff Calculator</h1>
-    <div class="left-side">
-        <section class="component">
-            <h2 class="comp-head">Enter Meal Details</h2>
-            <form class="user-input" name="vm.userInput" novalidate>
-                <div class="col left">
-                    <label for="mealPrice">Base Meal Price: $</label>
-                    <label for="taxRate">Tax Rate: %</label>
-                    <label for="tipRate">Tip Rate: %</label>
-                </div>
-                <div class="col right">
-                    <input name="mealPrice" type="text" ng-model="vm.currentMeal.mealPrice" required>
-                    <input name="taxRate" type="number" ng-model="vm.currentMeal.taxRate" required ng-min="0">
-                    <input name="tipRate" type="number" ng-model="vm.currentMeal.tipRate" required ng-min="0">
-                </div>
-                <div class="error-messages">
-                    <p ng-if="vm.required && vm.check">{{ vm.errorMessages.required }}</p>
-                    <p ng-if="vm.userInput.taxRate.$error.min && vm.check">{{ "Tax " + vm.errorMessages.min }}</p>
-                    <p ng-if="vm.userInput.tipRate.$error.min && vm.check">{{ "Tip " + vm.errorMessages.min }}</p>
-                </div>
-                <div class="buttons">
-                    <button ng-click="vm.submit(vm.userInput)">Submit</button>
-                    <button ng-click="vm.reset()">Clear</button>
-                </div>
-            </form>
-        </section>
-    </div>
+  <h1 class="title">waiterCalc</h1>
+  <div class="left-side">
+    <section class="component data-entry">
+      <h2 class="comp-head">Enter Meal Details</h2>
+      <form class="user-input" name="vm.userInput" novalidate>
+        <div class="col left">
+          <label for="mealPrice">Base Meal Price: $</label>
+          <label for="taxRate">Tax Rate: %</label>
+          <label for="tipRate">Tip Rate: %</label>
+        </div>
+        <div class="col right">
+          <input name="mealPrice" type="text" ng-model="vm.currentMeal.mealPrice" required>
+          <input name="taxRate" type="number" ng-model="vm.currentMeal.taxRate" required ng-min="0">
+          <input name="tipRate" type="number" ng-model="vm.currentMeal.tipRate" required ng-min="0">
+        </div>
+        <div class="error-messages">
+          <p ng-if="vm.required && vm.check">{{ vm.errorMessages.required }}</p>
+          <p ng-if="vm.userInput.taxRate.$error.min && vm.check">{{ "Tax " + vm.errorMessages.min }}</p>
+          <p ng-if="vm.userInput.tipRate.$error.min && vm.check">{{ "Tip " + vm.errorMessages.min }}</p>
+        </div>
+        <div class="buttons">
+          <button ng-click="vm.submit(vm.userInput)">Submit</button>
+          <button ng-click="vm.reset()">Clear</button>
+        </div>
+      </form>
+    </section>
+  </div>
 
-    <div class="right-side">
-        <section class="component">
-            <h2 class="comp-head">Customer Charges</h2>
-            <div class="col left">
-                <span class="label">Subtotal</span>
-                <span class="label">Tip</span>
-            </div>
-            <div class="col right">
-                <span class="output">{{ vm.currentMeal.subtotal | currency : '' }}</span>
-                <span class="output">{{ vm.currentMeal.tip | currency : '' }}</span>
-            </div>
-            <hr>
-            <div class="col left">
-                <span class="label">Total</span>
-            </div>
-            <div class="col right">
-                <span class="output">{{ vm.currentMeal.total | currency : '' }}</span>
-            </div>
-        </section>
+  <div class="right-side">
+    <section class="component charges">
+      <h2 class="comp-head">Customer Charges</h2>
+      <div class="col left">
+        <span class="label">Subtotal</span>
+        <span class="label">Tip</span>
+      </div>
+      <div class="col right">
+        <span class="output">{{ vm.currentMeal.subtotal | currency : '' }}</span>
+        <span class="output">{{ vm.currentMeal.tip | currency : '' }}</span>
+      </div>
+      <div class="total">
+          <div class="col left">
+            <span class="label">Total</span>
+          </div>
+          <div class="col right">
+            <span class="output">{{ vm.currentMeal.total | currency : '' }}</span>
+          </div>
+      </div>
+    </section>
 
-        <section class="component">
-            <h2 class="comp-head">My Earnings Info</h2>
-            <div class="col left">
-                <span class="label">Tip Total</span>
-                <span class="label">Meal Count</span>
-                <span class="label">Average Tip per Meal</span>
-            </div>
-            <div class="col right">
-                <span class="output">{{ vm.myEarnings.tipTotal | currency : '' }}</span>
-                <span class="output">{{ vm.myEarnings.mealCount }}</span>
-                <span class="output">{{ vm.myEarnings.averageTip | currency : '' }}</span>
-            </div>
-        </section>
-    </div>
+    <section class="component earnings">
+      <h2 class="comp-head">My Earnings Info</h2>
+      <div class="col left">
+        <span class="label">Tip Total</span>
+        <span class="label">Meal Count</span>
+        <span class="label">Average Tip per Meal</span>
+      </div>
+      <div class="col right">
+        <span class="output">{{ vm.myEarnings.tipTotal | currency : '' }}</span>
+        <span class="output">{{ vm.myEarnings.mealCount }}</span>
+        <span class="output">{{ vm.myEarnings.averageTip | currency : '' }}</span>
+      </div>
+    </section>
+  </div>
 
-    <div class="bottom">
-        <button class="total-reset" ng-click="vm.totalReset()">Reset</button>
-    </div>
+  <div class="bottom">
+    <button class="total-reset" ng-click="vm.totalReset()">Reset</button>
+  </div>
 
-    <script src="//code.angularjs.org/1.5.7/angular.min.js"></script>
-    <script src="app.js"></script>
+  <script src="//code.angularjs.org/1.5.7/angular.min.js"></script>
+  <script src="app.js"></script>
 </body>
+
 </html>
