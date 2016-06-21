@@ -82,6 +82,7 @@ button {
     font-size: 18px;
     font-weight: 100;
     color: #568ea0;
+    background-color: transparent;
 }
 
 .data-entry {
@@ -151,4 +152,12 @@ button {
 
 .total-reset {
     background-color: #a36060;
+}
+
+@media (max-width:500px){
+    .left-side, .right-side, .component {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
