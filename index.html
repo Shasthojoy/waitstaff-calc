@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Waitstaff Calculator</title>
 
-  <link href="//fonts.googleapis.com/css?family=Raleway:100,300" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300" rel="stylesheet">
   <link href="main.css" rel="stylesheet">
 
 </head>
@@ -23,7 +23,7 @@
           <label for="tipRate">Tip Rate: %</label>
         </div>
         <div class="col right">
-          <input name="mealPrice" type="number" ng-model="vm.currentMeal.mealPrice" required>
+          <input name="mealPrice" type="number" ng-model="vm.currentMeal.mealPrice" required placeholder="0.00">
           <input name="taxRate" type="number" ng-model="vm.currentMeal.taxRate" required ng-min="0">
           <input name="tipRate" type="number" ng-model="vm.currentMeal.tipRate" required ng-min="0">
         </div>
