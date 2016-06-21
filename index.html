@@ -23,7 +23,7 @@
           <label for="tipRate">Tip Rate: %</label>
         </div>
         <div class="col right">
-          <input name="mealPrice" type="text" ng-model="vm.currentMeal.mealPrice" required>
+          <input name="mealPrice" type="number" ng-model="vm.currentMeal.mealPrice" required>
           <input name="taxRate" type="number" ng-model="vm.currentMeal.taxRate" required ng-min="0">
           <input name="tipRate" type="number" ng-model="vm.currentMeal.tipRate" required ng-min="0">
         </div>
