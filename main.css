@@ -5,7 +5,7 @@
 body {
     text-align: center;
     font-family: 'Raleway', sans-serif;
-    font-weight: 100;
+    font-weight: 200;
     color: #568ea0;
     background-color: #5d767f;
 }
@@ -80,7 +80,7 @@ button {
     outline: none;
     font-family: 'Raleway', sans-serif;
     font-size: 18px;
-    font-weight: 100;
+    font-weight: 200;
     color: #568ea0;
     background-color: transparent;
 }
