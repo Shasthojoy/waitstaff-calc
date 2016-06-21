@@ -13,7 +13,7 @@
     <div class="left-side">
         <section class="component">
             <h2 class="comp-head">Enter Meal Details</h2>
-            <form class="user-input" name="currentMeal" novalidate>
+            <form class="user-input" name="vm.userInput" novalidate>
                 <div class="col left">
                     <label for="mealPrice">Base Meal Price: $</label>
                     <label for="taxRate">Tax Rate: %</label>
@@ -21,12 +21,17 @@
                 </div>
                 <div class="col right">
                     <input name="mealPrice" type="text" ng-model="vm.currentMeal.mealPrice" required>
-                    <input name="taxRate" type="text" ng-model="vm.currentMeal.taxRate" required>
-                    <input name="tipRate" type="text" ng-model="vm.currentMeal.tipRate" required>
+                    <input name="taxRate" type="number" ng-model="vm.currentMeal.taxRate" required ng-min="0">
+                    <input name="tipRate" type="number" ng-model="vm.currentMeal.tipRate" required ng-min="0">
+                </div>
+                <div class="error-messages">
+                    <p ng-if="vm.required && vm.check">{{ vm.errorMessages.required }}</p>
+                    <p ng-if="vm.userInput.taxRate.$error.min && vm.check">{{ "Tax " + vm.errorMessages.min }}</p>
+                    <p ng-if="vm.userInput.tipRate.$error.min && vm.check">{{ "Tip " + vm.errorMessages.min }}</p>
                 </div>
                 <div class="buttons">
-                    <button ng-click="vm.submit()">Submit</button>
-                    <button ng-click="vm.reset()">Cancel</button>
+                    <button ng-click="vm.submit(vm.userInput)">Submit</button>
+                    <button ng-click="vm.reset()">Clear</button>
                 </div>
             </form>
         </section>
