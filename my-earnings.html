@@ -1,0 +1,19 @@
+<div class="right-side">
+  <section class="component earnings">
+    <h2 class="comp-head">My Earnings Info</h2>
+    <div class="col left">
+      <span class="label">Tip Total</span>
+      <span class="label">Meal Count</span>
+      <span class="label">Average Tip per Meal</span>
+    </div>
+    <div class="col right">
+      <span class="output">{{ vm.myEarnings.tipTotal | currency : '' }}</span>
+      <span class="output">{{ vm.myEarnings.mealCount }}</span>
+      <span class="output">{{ vm.myEarnings.averageTip | currency : '' }}</span>
+    </div>
+  </section>
+
+  <div class="bottom">
+    <button class="total-reset" ng-click="vm.totalReset()">Reset</button>
+  </div>
+</div>

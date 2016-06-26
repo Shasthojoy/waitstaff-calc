@@ -1,4 +1,38 @@
-angular.module('waiterCalc', [])
+angular.module('waiterCalc', ['ngRoute'])
+    .value('pages', ['new-meal', 'my-earnings'])
+    .run(function($rootScope, $location){
+        $rootScope.$on('$routeChangeError', function(){
+            $location.path('/');
+        });
+    })
+    .config(['$routeProvider', function($routeProvider){
+        $routeProvider.when('/', {
+            templateUrl: 'welcome.html',
+            controller: 'MainCtrl'
+        })
+        .when('/new-meal', {
+            templateUrl: 'new-meal.html',
+            controller: 'MainCtrl'
+        })
+        .when('/my-earnings', {
+            templateUrl: 'my-earnings.html',
+            controller: 'MainCtrl'
+        })
+        .when('/:unknown', {
+            templateUrl: 'welcome.html',
+            controller: 'MainCtrl',
+            resolve: {
+                error : function(pages, $route, $location){
+                    var unknown = $route.current.params.unknown;
+                    if(pages.indexOf(unknown)===-1){
+                        $location.path('/');
+                        return;
+                    }
+                    return unknown;
+                }
+            }
+        })
+    }])
   .controller('MainCtrl', function() {
     var vm = this;
 
