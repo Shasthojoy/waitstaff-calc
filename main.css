@@ -182,3 +182,20 @@ button {
         margin-right: 0;
     }
 }
+
+/*Animations*/
+
+.animation-container {
+    position: relative;
+}
+
+.animate-view.ng-enter,
+.animate-view.ng-leave {
+    transition: .6s linear all;
+    position: absolute;
+    width: 100%;
+}
+.animate-view.ng-enter { margin-left: 2000px; opacity: 0;}
+.animate-view.ng-enter.ng-enter-active { margin-left: 0; opacity: 1;}
+.animate-view.ng-leave { margin-left: 0; opacity: 1;}
+.animate-view.ng-leave.ng-leave-active { margin-left: -3000px; opacity: 0.7;}

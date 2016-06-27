@@ -1,4 +1,4 @@
-angular.module('waiterCalc', ['ngRoute'])
+angular.module('waiterCalc', ['ngRoute', 'ngAnimate'])
     .value('pages', ['new-meal', 'my-earnings'])
     .run(function($rootScope, $location){
         $rootScope.$on('$routeChangeError', function(){
